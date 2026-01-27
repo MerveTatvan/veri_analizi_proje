@@ -1,0 +1,32 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import os
+
+# =========================
+# 1. Veri Yükleme
+# =========================
+df = pd.read_csv("data/daily_sales.csv")
+
+print("İlk 5 satır:")
+print(df.head())
+
+print("\nGenel Bilgi:")
+print(df.info())
+
+print("\nİstatistikler:")
+print(df.describe())
+
+# =========================
+# 2. Görselleştirme
+# =========================
+os.makedirs("visuals", exist_ok=True)
+
+plt.figure()
+plt.plot(df["day"], df["sales"])
+plt.xlabel("Day")
+plt.ylabel("Sales")
+plt.title("Daily Sales")
+plt.savefig("visuals/day05_eda_plots.png")
+plt.close()
+
+print("\nGrafik oluşturuldu: visuals/day05_eda_plots.png")
